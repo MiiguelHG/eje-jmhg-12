@@ -1630,20 +1630,20 @@
                                     <div class="card-text h-full space-y-4">
                                         <div class="input-area">
                                           <label for="name" class="form-label">Nombre*</label>
-                                          <input id="name" type="text" class="form-control" placeholder="Digite nombre de categoria">
+                                          <input id="descripcionCategoriaAgregar" type="text" class="form-control" placeholder="Digite nombre de categoria">
                                         </div>
                         
                         
                                         <div class="input-area">
                                           <label for="description" class="form-label">Observaciones</label>
-                                          <textarea id="description" rows="5" class="form-control" placeholder="Digite observaciones"></textarea>
+                                          <textarea id="observacionesCategoriaAgregar" rows="5" class="form-control" placeholder="Digite observaciones"></textarea>
                                         </div>
           
                                       </div>
                                   </div>
                                   <!-- Modal footer -->
                                   <div class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                    <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-success-500">Guardar</button>
+                                    <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-success-500" onclick="agregarCategoria();">Guardar</button>
                                     <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-secondary-500">Cancelar</button>
                                   </div>
                                 </div>
@@ -1674,20 +1674,20 @@
                                     <div class="card-text h-full space-y-4">
                                         <div class="input-area">
                                           <label for="name" class="form-label">Nombre*</label>
-                                          <input id="name" type="text" class="form-control" placeholder="Digite nombre de categoria">
+                                          <input id="nombreCategoriaActualizar" type="text" class="form-control" placeholder="Digite nombre de categoria">
                                         </div>
                         
                         
                                         <div class="input-area">
                                           <label for="description" class="form-label">Observaciones</label>
-                                          <textarea id="description" rows="5" class="form-control" placeholder="Digite observaciones"></textarea>
+                                          <textarea id="observacionesCategoriaActualizar" rows="5" class="form-control" placeholder="Digite observaciones"></textarea>
                                         </div>
           
                                       </div>
                                   </div>
                                   <!-- Modal footer -->
                                   <div class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                    <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-primary-500">Actualizar</button>
+                                    <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-primary-500" onclick="actualizarCategoriaById();">Actualizar</button>
                                     <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-secondary-500">Cancelar</button>
                                   </div>
                                 </div>
@@ -1718,13 +1718,13 @@
                                     <div class="card-text h-full space-y-4">
                                         <div class="input-area">
                                           <label for="name" class="form-label">Nombre*</label>
-                                          <input id="name" type="text" class="form-control" placeholder="Digite nombre de categoria" value="Alimentos y bebidas" readonly>
+                                          <input id="descripcionCategoriaVisualizar" type="text" class="form-control" placeholder="Digite nombre de categoria" value="Alimentos y bebidas" readonly>
                                         </div>
                         
                         
                                         <div class="input-area">
-                                          <label for="description" class="form-label">Observaciones</label>
-                                          <textarea id="description" rows="5" class="form-control" placeholder="Digite observaciones" readonly>Para alimentos y bebidas</textarea>
+                                          <label for="observacionesCategoriaVisualizar" class="form-label">Observaciones</label>
+                                          <textarea id="observacionesCategoriaVisualizar" rows="5" class="form-control" placeholder="Digite observaciones" readonly>Para alimentos y bebidas</textarea>
                                         </div>
           
                                       </div>
@@ -1759,12 +1759,12 @@
                                   <!-- Modal body -->
                                   <div class="p-6 space-y-4">
                                     <div class="card-text h-full space-y-4">
-                                      <p>¿Esta seguro que quiere eliminar la categoria de Alimentos y Bebidas?</p>
+                                      <p>¿Esta seguro que quiere eliminar la categoria?</p>
                                     </div>
                                   </div>
                                   <!-- Modal footer -->
                                   <div class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                    <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-danger-500">Eliminar</button>
+                                    <button onclick="idEliminarCategoriaById();" data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-danger-500">Eliminar</button>
                                     <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-secondary-500">Cancelar</button>
                                   </div>
                                 </div>
@@ -1778,7 +1778,7 @@
                         <span class="  col-span-4 hidden"></span>
                         <div class="inline-block min-w-full align-middle">
                           <div class="overflow-hidden ">
-                            <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table">
+                            <table id="tabla-categorias" class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700 data-table">
                               <thead class=" bg-slate-200 dark:bg-slate-700">
                                 <tr>
 
@@ -1805,166 +1805,6 @@
                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                       </button>
                                       <button data-bs-toggle="modal" data-bs-target="#deleteModal" class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Ropa y Accesorios</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                      </button>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="table-td">Tecnología y Electrónica</td>
-                                  <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                      </button>
-                                      <button class="action-btn" type="button">
                                         <iconify-icon icon="heroicons:trash"></iconify-icon>
                                       </button>
                                     </div>
@@ -2050,5 +1890,9 @@
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <script src="assets/js/rt-plugins.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- scripts porpios del front-->
+  <script src="assets/js/my-js/front-categorias.js"></script>
 </body>
 </html>
